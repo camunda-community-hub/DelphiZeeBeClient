@@ -1,0 +1,338 @@
+object frmClient: TfrmClient
+  Left = 0
+  Top = 0
+  Caption = 'ZeeBe Client'
+  ClientHeight = 537
+  ClientWidth = 762
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    Position.X = 8.000000000000000000
+    Position.Y = 240.000000000000000000
+    Size.Width = 745.000000000000000000
+    Size.Height = 289.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Viewport.Width = 741.000000000000000000
+    Viewport.Height = 285.000000000000000000
+  end
+  object btnTopology: TButton
+    Anchors = [akTop, akRight]
+    Position.X = 603.000000000000000000
+    Position.Y = 48.000000000000000000
+    Size.Width = 150.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = 'Get Server-Topology'
+    OnClick = btnTopologyClick
+  end
+  object btnCreateWFInstance: TButton
+    Position.X = 8.000000000000000000
+    Position.Y = 88.000000000000000000
+    Size.Width = 129.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    Text = 'Create WF Instance'
+    OnClick = btnCreateWFInstanceClick
+  end
+  object lblServer: TLabel
+    Anchors = [akTop, akRight]
+    Position.X = 603.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 57.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'SERVER'
+    TabOrder = 8
+  end
+  object edtServer: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    Anchors = [akTop, akRight]
+    TabOrder = 10
+    Text = '127.0.0.1'
+    Position.X = 603.000000000000000000
+    Position.Y = 24.000000000000000000
+    Size.Width = 65.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TextPrompt = 'Server IP'
+    OnChange = edtServerChange
+  end
+  object edtPort: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    Anchors = [akTop, akRight]
+    TabOrder = 9
+    Text = '58772'
+    Position.X = 675.000000000000000000
+    Position.Y = 24.000000000000000000
+    Size.Width = 78.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TextPrompt = 'Port Nr'
+    OnChange = edtPortChange
+    OnValidate = edtPortValidate
+  end
+  object lblPort: TLabel
+    Anchors = [akTop, akRight]
+    Position.X = 675.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 78.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'PORT (26500)'
+    TabOrder = 7
+  end
+  object MaskToAlphaEffect1: TMaskToAlphaEffect
+  end
+  object edtBPMFile: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    Anchors = [akLeft, akTop, akRight]
+    TabOrder = 12
+    Text = '.\order-process.bpmn'
+    Position.X = 8.000000000000000000
+    Position.Y = 24.000000000000000000
+    Size.Width = 580.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    OnDblClick = edtBPMFileDblClick
+  end
+  object lblBMPFile: TLabel
+    Position.X = 8.000000000000000000
+    Position.Y = 8.000000000000000000
+    Text = 'Workflow BMPFile'
+    TabOrder = 13
+  end
+  object edtProcessID: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 14
+    Text = 'order-process'
+    Position.X = 152.000000000000000000
+    Position.Y = 88.000000000000000000
+  end
+  object dlgOpenBPMNFile: TOpenDialog
+    FileName = 'C:\Users\pmm\zeebe-docker-compose\bpmn\order-process.bpmn'
+    Filter = 'BPM-File|*.bpmn'
+    InitialDir = 'c:\Users\pmm\zeebe-docker-compose\bpmn'
+    Left = 312
+    Top = 8
+  end
+  object lblProcessID: TLabel
+    Position.X = 152.000000000000000000
+    Position.Y = 72.000000000000000000
+    Size.Width = 97.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Process ID'
+    TabOrder = 16
+  end
+  object btnCreateJob: TButton
+    Position.X = 8.000000000000000000
+    Position.Y = 128.000000000000000000
+    Size.Width = 129.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 25
+    Text = 'Create Job'
+    OnClick = btnCreateJobClick
+  end
+  object edtJobName: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 28
+    Text = 'initiate-payment'
+    Position.X = 152.000000000000000000
+    Position.Y = 128.000000000000000000
+  end
+  object lblMessage: TLabel
+    Position.X = 152.000000000000000000
+    Position.Y = 192.000000000000000000
+    Size.Width = 97.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'MESSAGE'
+    TabOrder = 27
+  end
+  object btnDeploy: TButton
+    Position.X = 8.000000000000000000
+    Position.Y = 56.000000000000000000
+    Size.Width = 129.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 32
+    Text = 'Deploy WF'
+    OnClick = btnDeployClick
+  end
+  object tvWorkFlow: TTreeView
+    Anchors = [akLeft, akTop, akRight]
+    Position.X = 448.000000000000000000
+    Position.Y = 88.000000000000000000
+    Size.Width = 308.000000000000000000
+    Size.Height = 145.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 38
+    Viewport.Width = 304.000000000000000000
+    Viewport.Height = 141.000000000000000000
+    object trviRoot: TTreeViewItem
+      IsChecked = False
+      IsExpanded = False
+      IsSelected = False
+      TabOrder = 0
+      Text = 'WORKFLOW'
+    end
+  end
+  object lblOrderID: TLabel
+    AutoSize = True
+    Position.X = 257.000000000000000000
+    Position.Y = 72.000000000000000000
+    Size.Width = 49.000000000000000000
+    Size.Height = 16.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'OrderID'
+    TabOrder = 20
+  end
+  object edtOrderID: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 19
+    Text = '#12345'
+    Position.X = 257.000000000000000000
+    Position.Y = 88.000000000000000000
+    Size.Width = 129.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object lblKey: TLabel
+    AutoSize = True
+    Position.X = 257.000000000000000000
+    Position.Y = 194.000000000000000000
+    Size.Width = 49.000000000000000000
+    Size.Height = 16.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'KEY'
+    TabOrder = 18
+  end
+  object lblAmount: TLabel
+    AutoSize = True
+    Position.X = 393.000000000000000000
+    Position.Y = 72.000000000000000000
+    Size.Width = 65.000000000000000000
+    Size.Height = 16.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Amount'
+    TabOrder = 21
+  end
+  object edtAmount: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 22
+    Text = '199'
+    Position.X = 393.000000000000000000
+    Position.Y = 88.000000000000000000
+    Size.Width = 48.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    OnValidate = edtAmountValidate
+  end
+  object edtJobID: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 35
+    Position.X = 152.000000000000000000
+    Position.Y = 167.000000000000000000
+    Size.Width = 233.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object lblJobID: TLabel
+    Position.X = 153.000000000000000000
+    Position.Y = 151.000000000000000000
+    Size.Width = 57.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'JobID'
+    TabOrder = 36
+  end
+  object btnCompleteJob: TButton
+    Position.X = 9.000000000000000000
+    Position.Y = 168.000000000000000000
+    Size.Width = 128.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 34
+    Text = 'Complete Job'
+    OnClick = btnCompleteJobClick
+  end
+  object lblWorkFlow: TLabel
+    Position.X = 448.000000000000000000
+    Position.Y = 72.000000000000000000
+    Size.Width = 89.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Work Flow'
+    TabOrder = 39
+  end
+  object edtWFInstanceKey: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 42
+    Position.X = 256.000000000000000000
+    Position.Y = 128.000000000000000000
+    Size.Width = 185.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object lblJobName: TLabel
+    Position.X = 152.000000000000000000
+    Position.Y = 112.000000000000000000
+    Size.Width = 97.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Job Name'
+    TabOrder = 29
+  end
+  object lblJob2: TLabel
+    Position.X = 211.000000000000000000
+    Position.Y = 112.000000000000000000
+    Text = '(ship-with-insurance)'
+    TabOrder = 30
+  end
+  object lblWFInstance: TLabel
+    Position.X = 360.000000000000000000
+    Position.Y = 112.000000000000000000
+    Size.Width = 81.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'WFInstance ID'
+    TabOrder = 43
+  end
+  object btnPublishMessage: TButton
+    Position.X = 8.000000000000000000
+    Position.Y = 208.000000000000000000
+    Size.Width = 129.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 24
+    Text = 'Publish Message'
+    OnClick = btnPublishMessageClick
+  end
+  object edtMessage: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 26
+    Text = 'payment-received'
+    Position.X = 152.000000000000000000
+    Position.Y = 208.000000000000000000
+  end
+  object edtKey: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 17
+    Text = '#12345'
+    Position.X = 257.000000000000000000
+    Position.Y = 208.000000000000000000
+    Size.Width = 129.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+end
