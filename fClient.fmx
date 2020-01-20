@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 object frmClient: TfrmClient
   Left = 0
   Top = 0
@@ -676,4 +675,3 @@ object frmClient: TfrmClient
     Size.PlatformDefault = False
   end
 end
->>>>>>> a46375ee962eac94d812d3db24b56c4efd66aa33
