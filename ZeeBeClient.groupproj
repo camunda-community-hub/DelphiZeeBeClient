@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{34479C10-772B-4709-897A-20FA00735091}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="ZeeBeTestCLI.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ZeeBeTestClient.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ZeeBeTestCLI">
+        <MSBuild Projects="ZeeBeTestCLI.dproj"/>
+    </Target>
+    <Target Name="ZeeBeTestCLI:Clean">
+        <MSBuild Projects="ZeeBeTestCLI.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ZeeBeTestCLI:Make">
+        <MSBuild Projects="ZeeBeTestCLI.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ZeeBeTestClient">
+        <MSBuild Projects="ZeeBeTestClient.dproj"/>
+    </Target>
+    <Target Name="ZeeBeTestClient:Clean">
+        <MSBuild Projects="ZeeBeTestClient.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ZeeBeTestClient:Make">
+        <MSBuild Projects="ZeeBeTestClient.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ZeeBeTestCLI;ZeeBeTestClient"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ZeeBeTestCLI:Clean;ZeeBeTestClient:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ZeeBeTestCLI:Make;ZeeBeTestClient:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

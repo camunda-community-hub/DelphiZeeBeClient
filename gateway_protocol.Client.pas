@@ -1,6 +1,12 @@
 unit gateway_protocol.Client;
 
-// This is a generated unit! Do NOT edit!
+// This unit was initially generated  by: DelphiGrpc "ProtoBufGenerator.exe"
+
+(* -----------------------------------------------------------
+   PMM 18.05.2020 The following changes where found necessary:
+	  Int64 -> UInt64 (so far used)
+	  function Topology: Has no parameter (was empty record)
+  ----------------------------------------------------------*)
 
 interface
 
@@ -11,32 +17,23 @@ type
 
    IGateway_Client = interface
       procedure ActivateJobs(const aActivateJobsRequest: TActivateJobsRequest; const aActivateJobsCallback: TActivateJobsCallback);
-      procedure CancelWorkflowInstance(const aworkflowInstanceKey: Int64);
+      procedure CancelWorkflowInstance(const aworkflowInstanceKey: UInt64);
       procedure CompleteJob(const aCompleteJobRequest: TCompleteJobRequest);
       function CreateWorkflowInstance(const aCreateWorkflowInstanceRequest: TCreateWorkflowInstanceRequest): TCreateWorkflowInstanceResponse; overload;
-{
-      function CreateWorkflowInstance(const aCreateWorkflowInstanceRequest: TCreateWorkflowInstanceRequest_N): TCreateWorkflowInstanceResponse; overload;
-      function CreateWorkflowInstance(const aCreateWorkflowInstanceRequest: TCreateWorkflowInstanceRequest_0): TCreateWorkflowInstanceResponse; overload;
-}
       function CreateWorkflowInstanceWithResult(const aCreateWorkflowInstanceWithResultRequest: TCreateWorkflowInstanceWithResultRequest): TCreateWorkflowInstanceWithResultResponse;
       function DeployWorkflow(const aworkflows: TWorkflowRequestObjectArray): TDeployWorkflowResponse;
       procedure FailJob(const aFailJobRequest: TFailJobRequest);
       procedure PublishMessage(const aPublishMessageRequest: TPublishMessageRequest);
       procedure ResolveIncident(const aincidentKey: Int64);
       procedure SetVariables(const aSetVariablesRequest: TSetVariablesRequest);
-{      function Topology(const aTopologyRequest: TTopologyRequest): TTopologyResponse; }
       function Topology(): TTopologyResponse;
       procedure UpdateJobRetries(const aUpdateJobRetriesRequest: TUpdateJobRetriesRequest);
    end;
 
    TGateway_Client = class(TBaseGrpcClient,IGateway_Client)
       procedure ActivateJobs(const aActivateJobsRequest: TActivateJobsRequest; const aActivateJobsCallback: TActivateJobsCallback);
-      procedure CancelWorkflowInstance(const aworkflowInstanceKey: Int64);
+      procedure CancelWorkflowInstance(const aworkflowInstanceKey: UInt64);
       procedure CompleteJob(const aCompleteJobRequest: TCompleteJobRequest);
-{
-      function CreateWorkflowInstance(const aCreateWorkflowInstanceRequest: TCreateWorkflowInstanceRequest_N): TCreateWorkflowInstanceResponse; overload;
-      function CreateWorkflowInstance(const aCreateWorkflowInstanceRequest: TCreateWorkflowInstanceRequest_0): TCreateWorkflowInstanceResponse; overload;
-}
       function CreateWorkflowInstance(const aCreateWorkflowInstanceRequest: TCreateWorkflowInstanceRequest): TCreateWorkflowInstanceResponse; overload;
 
       function CreateWorkflowInstanceWithResult(const aCreateWorkflowInstanceWithResultRequest: TCreateWorkflowInstanceWithResultRequest): TCreateWorkflowInstanceWithResultResponse;
@@ -45,7 +42,6 @@ type
       procedure PublishMessage(const aPublishMessageRequest: TPublishMessageRequest);
       procedure ResolveIncident(const aincidentKey: Int64);
       procedure SetVariables(const aSetVariablesRequest: TSetVariablesRequest);
-{      function Topology(const aTopologyRequest: TTopologyRequest): TTopologyResponse;  }
       function Topology(): TTopologyResponse;
       procedure UpdateJobRetries(const aUpdateJobRetriesRequest: TUpdateJobRetriesRequest);
       function BasePath: string; override;
@@ -70,7 +66,7 @@ begin
    DoOuputStreamRequest<TActivateJobsRequest,TActivateJobsResponse>(aActivateJobsRequest, 'ActivateJobs', SubCallback);
 end;
 
-procedure TGateway_Client.CancelWorkflowInstance(const aworkflowInstanceKey: Int64);
+procedure TGateway_Client.CancelWorkflowInstance(const aworkflowInstanceKey: UInt64);
 var CancelWorkflowInstanceRequest_In: TCancelWorkflowInstanceRequest;
 begin
    CancelWorkflowInstanceRequest_In.workflowInstanceKey := aworkflowInstanceKey;
@@ -82,17 +78,6 @@ begin
    DoRequest<TCompleteJobRequest,TCompleteJobResponse>(aCompleteJobRequest, 'CompleteJob');
 end;
 
-{
-function TGateway_Client.CreateWorkflowInstance(const aCreateWorkflowInstanceRequest: TCreateWorkflowInstanceRequest_N): TCreateWorkflowInstanceResponse;
-begin
-   Result := DoRequest<TCreateWorkflowInstanceRequest_N,TCreateWorkflowInstanceResponse>(aCreateWorkflowInstanceRequest, 'CreateWorkflowInstance');
-end;
-
-function TGateway_Client.CreateWorkflowInstance(const aCreateWorkflowInstanceRequest: TCreateWorkflowInstanceRequest_0): TCreateWorkflowInstanceResponse;
-begin
-   Result := DoRequest<TCreateWorkflowInstanceRequest_0,TCreateWorkflowInstanceResponse>(aCreateWorkflowInstanceRequest, 'CreateWorkflowInstance');
-end;
-}
 function TGateway_Client.CreateWorkflowInstance(const aCreateWorkflowInstanceRequest: TCreateWorkflowInstanceRequest): TCreateWorkflowInstanceResponse;
 begin
    Result := DoRequest<TCreateWorkflowInstanceRequest,TCreateWorkflowInstanceResponse>(aCreateWorkflowInstanceRequest, 'CreateWorkflowInstance');
@@ -134,7 +119,6 @@ end;
 
 function TGateway_Client.Topology({const aTopologyRequest: TTopologyRequest}): TTopologyResponse;
 begin
-{   Result := DoRequest<TTopologyRequest,TTopologyResponse>(aTopologyRequest, 'Topology'); }
    Result := DoRequestNoInput<TTopologyResponse>('Topology');
 end;
 
