@@ -16,10 +16,11 @@ The initial code for units "gateway_protocol.Client" and "gateway_protocol.Proto
 See header part of the units mentioned for more details.
 
 # Examples
-Includes three test projects:
-- ZeeBeTestCLI uses the command line interface to communicate to ZeeBe
-- ZeeBeTestClient uses the gRPC interface directly. The test workflow is "order-process.bpmn" used in zeebe-tutorial(https://docs.zeebe.io/getting-started/tutorial-setup.html)
-- ZeeBeTestgRPC is a more generic client build arrount the gRPC-Interface encapsulated in the uZeeBeClient.pas unit.
+The reository includes three test projects. Two are very closely related to the test workflow "order-process.bpmn" used in zeebe-tutorial(https://docs.zeebe.io/getting-started/tutorial-setup.html)
+- ZeeBeTestCLI: Uses the command line interface to communicate to ZeeBe
+- ZeeBeTestClient: Uses the gRPC interface directly. 
+The last example uses an more generic approach build arrount the gRPC-Interface encapsulated in the uZeeBeClient.pas unit.
+- ZeeBeTestgRPC: Uses the gRPC interface via the uZeeBeClient.pas unit.  
 
 # Status
 Although it has been used successfully in an prove of concept project, the code is not production ready yet. 
